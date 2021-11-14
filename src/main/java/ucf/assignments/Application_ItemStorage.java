@@ -5,7 +5,7 @@ package ucf.assignments;
  *  Copyright 2021 first_name last_name
  */
 
-public class HelloApplication_ItemStorage extends HelloApplication {
+public class Application_ItemStorage extends Application {
     public static class ItemComponents { //declare a public static class to utilize as a struct and hold the information for each item
         private String itemTitle; //declare a String variable, itemTitle, to hold the name or title of the item
         private String itemDueDate; //declare a String variable, itemDueDate, to hold the due date of the item

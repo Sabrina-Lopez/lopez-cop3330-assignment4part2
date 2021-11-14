@@ -9,7 +9,7 @@ import java.util.*;
 
 public class ToDoListApp_SystemEdition {
     public static void main(String[] args) throws IOException {
-        HashMap<String, HashMap<String, HelloApplication_ItemStorage.ItemComponents>> outerMap = new HashMap<>();
+        HashMap<String, HashMap<String, Application_ItemStorage.ItemComponents>> outerMap = new HashMap<>();
 
         Scanner openAppResponseInput = new Scanner(System.in);
         System.out.println("Would you like to run the To Do List App (y/n)?");
@@ -187,7 +187,7 @@ public class ToDoListApp_SystemEdition {
             }
 
             Scanner loadListResponseInput = new Scanner(System.in);
-            System.out.println("Would you like to lod a list from an external file (y/n)?");
+            System.out.println("Would you like to load a list from an external file (y/n)?");
             String loadListResponse = loadListResponseInput.next();
 
             while(loadListResponse.equals("y")) {
@@ -215,13 +215,13 @@ public class ToDoListApp_SystemEdition {
 
     }
 
-    public static String makeListFunction(HashMap<String, HashMap<String, HelloApplication_ItemStorage.ItemComponents>> outerMap, Scanner makeListResponseInput) {
+    public static String makeListFunction(HashMap<String, HashMap<String, Application_ItemStorage.ItemComponents>> outerMap, Scanner makeListResponseInput) {
 
         Scanner listNameInput = new Scanner(System.in);
         System.out.println("What do you want to name your new list?");
         String listName = listNameInput.next();
 
-        HashMap<String, HelloApplication_ItemStorage.ItemComponents> innerMap = new HashMap<>();
+        HashMap<String, Application_ItemStorage.ItemComponents> innerMap = new HashMap<>();
         outerMap.put(listName, innerMap);
 
         System.out.println("Would you like to make another list (y/n)?");
@@ -229,7 +229,7 @@ public class ToDoListApp_SystemEdition {
         return makeListResponseInput.next();
     }
 
-    public static String makeItemFunction(HashMap<String, HashMap<String, HelloApplication_ItemStorage.ItemComponents>> outerMap, Scanner makeItemResponseInput) {
+    public static String makeItemFunction(HashMap<String, HashMap<String, Application_ItemStorage.ItemComponents>> outerMap, Scanner makeItemResponseInput) {
         Scanner listForNewItemInput = new Scanner(System.in);
         System.out.println("For which of the following lists would you like to add this item into? Please input the exact name of the list.");
         for(int i = 0; i < outerMap.size(); i++) {
@@ -262,8 +262,8 @@ public class ToDoListApp_SystemEdition {
         System.out.println("What is the completion status of your new item? 1 for completed; 0 for not completed.");
         String itemCompletionStatus = itemCompletionStatusInput.next();
 
-        HashMap<String, HelloApplication_ItemStorage.ItemComponents> innerMap = new HashMap<>();
-        HelloApplication_ItemStorage.ItemComponents itemStorage = new HelloApplication_ItemStorage.ItemComponents();
+        HashMap<String, Application_ItemStorage.ItemComponents> innerMap = new HashMap<>();
+        Application_ItemStorage.ItemComponents itemStorage = new Application_ItemStorage.ItemComponents();
 
         itemStorage.setItemTitle(itemTitle);
         itemStorage.setItemDescription(itemDesc);
@@ -278,7 +278,7 @@ public class ToDoListApp_SystemEdition {
         return makeItemResponseInput.next();
     }
 
-    public static String editListFunction(HashMap<String, HashMap<String, HelloApplication_ItemStorage.ItemComponents>> outerMap, Scanner editListResponseInput) {
+    public static String editListFunction(HashMap<String, HashMap<String, Application_ItemStorage.ItemComponents>> outerMap, Scanner editListResponseInput) {
         Scanner listToEditInput = new Scanner(System.in);
         System.out.println("For which of the following lists would you like to rename? Please input the exact name of the list.");
         for(int i = 0; i < outerMap.size(); i++) {
@@ -298,7 +298,7 @@ public class ToDoListApp_SystemEdition {
         return editListResponseInput.next();
     }
 
-    public static String editItemFunction(HashMap<String, HashMap<String, HelloApplication_ItemStorage.ItemComponents>> outerMap, Scanner editItemResponseInput, String listToEditItemOf) {
+    public static String editItemFunction(HashMap<String, HashMap<String, Application_ItemStorage.ItemComponents>> outerMap, Scanner editItemResponseInput, String listToEditItemOf) {
         Scanner itemToEditInput = new Scanner(System.in);
         System.out.println("For which of the following item(s) would you like to edit? Please input the exact name of the item.");
         for(int i = 0; i < outerMap.get(listToEditItemOf).size(); i++) {
@@ -368,7 +368,7 @@ public class ToDoListApp_SystemEdition {
         return editItemResponseInput.next();
     }
 
-    public static String removeListFunction(HashMap<String, HashMap<String, HelloApplication_ItemStorage.ItemComponents>> outerMap, Scanner typeOfListRemovalResponseInput) {
+    public static String removeListFunction(HashMap<String, HashMap<String, Application_ItemStorage.ItemComponents>> outerMap, Scanner typeOfListRemovalResponseInput) {
         Scanner listToRemoveInput = new Scanner(System.in);
         System.out.println("For which of the following lists would you like to remove? Please input the exact name of the list.");
         for(int i = 0; i < outerMap.size(); i++) {
@@ -383,7 +383,7 @@ public class ToDoListApp_SystemEdition {
         return typeOfListRemovalResponseInput.next();
     }
 
-    public static String removeAllListsFunction(HashMap<String, HashMap<String, HelloApplication_ItemStorage.ItemComponents>> outerMap) {
+    public static String removeAllListsFunction(HashMap<String, HashMap<String, Application_ItemStorage.ItemComponents>> outerMap) {
         for(int i = 0; i < outerMap.size(); i++) {
             String currentList = (String) outerMap.keySet().toArray()[i];
             outerMap.remove(currentList);
@@ -392,7 +392,7 @@ public class ToDoListApp_SystemEdition {
         return "n";
     }
 
-    public static String removeItemFunction(HashMap<String, HashMap<String, HelloApplication_ItemStorage.ItemComponents>> outerMap, Scanner typeOfItemRemovalResponseInput, String listToRemoveItemFrom) {
+    public static String removeItemFunction(HashMap<String, HashMap<String, Application_ItemStorage.ItemComponents>> outerMap, Scanner typeOfItemRemovalResponseInput, String listToRemoveItemFrom) {
         Scanner itemToEditInput = new Scanner(System.in);
         System.out.println("For which of the following item(s) would you like to remove? Please input the exact name of the item.");
         for(int i = 0; i < outerMap.get(listToRemoveItemFrom).size(); i++) {
@@ -409,7 +409,7 @@ public class ToDoListApp_SystemEdition {
         return typeOfItemRemovalResponseInput.next();
     }
 
-    public static String removeAllItemsFunction(HashMap<String, HashMap<String, HelloApplication_ItemStorage.ItemComponents>> outerMap, String listToRemoveItemsFrom) {
+    public static String removeAllItemsFunction(HashMap<String, HashMap<String, Application_ItemStorage.ItemComponents>> outerMap, String listToRemoveItemsFrom) {
         for(int i = 0; i < outerMap.get(listToRemoveItemsFrom).size(); i++) {
             String currentItem = (String) outerMap.get(listToRemoveItemsFrom).keySet().toArray()[i];
             outerMap.get(listToRemoveItemsFrom).remove(currentItem);
@@ -418,7 +418,7 @@ public class ToDoListApp_SystemEdition {
         return "n";
     }
 
-    public static void printAllListsAndItems(HashMap<String, HashMap<String, HelloApplication_ItemStorage.ItemComponents>> outerMap) {
+    public static void printAllListsAndItems(HashMap<String, HashMap<String, Application_ItemStorage.ItemComponents>> outerMap) {
         for (int i = 0; i < outerMap.size(); i++) {
             String currentList = (String) outerMap.keySet().toArray()[i];
             System.out.println(currentList + " has a inner hashmap with a size of " + outerMap.get(currentList).keySet().size());
@@ -441,21 +441,21 @@ public class ToDoListApp_SystemEdition {
         }
     }
 
-    public static void printAllLists(HashMap<String, HashMap<String, HelloApplication_ItemStorage.ItemComponents>> outerMap) {
+    public static void printAllLists(HashMap<String, HashMap<String, Application_ItemStorage.ItemComponents>> outerMap) {
         for(int i = 0; i < outerMap.size(); i++) {
             String currentList = (String) outerMap.keySet().toArray()[i];
             System.out.println(currentList);
         }
     }
 
-    public static void printAllItemsOfList(HashMap<String, HashMap<String, HelloApplication_ItemStorage.ItemComponents>> outerMap, String listToPrintItemsFrom) {
+    public static void printAllItemsOfList(HashMap<String, HashMap<String, Application_ItemStorage.ItemComponents>> outerMap, String listToPrintItemsFrom) {
         for(int i = 0; i < outerMap.get(listToPrintItemsFrom).size(); i++) {
             String currentItem = (String) outerMap.get(listToPrintItemsFrom).keySet().toArray()[i];
             System.out.println(currentItem);
         }
     }
 
-    public static void printAllCompletedItemsOfList(HashMap<String, HashMap<String, HelloApplication_ItemStorage.ItemComponents>> outerMap, String listToPrintItemsFrom) {
+    public static void printAllCompletedItemsOfList(HashMap<String, HashMap<String, Application_ItemStorage.ItemComponents>> outerMap, String listToPrintItemsFrom) {
         for(int i = 0; i < outerMap.get(listToPrintItemsFrom).size(); i++) {
             String currentItem = (String) outerMap.get(listToPrintItemsFrom).keySet().toArray()[i];
 
@@ -465,7 +465,7 @@ public class ToDoListApp_SystemEdition {
         }
     }
 
-    public static void printAllUncompletedItemsOfList(HashMap<String, HashMap<String, HelloApplication_ItemStorage.ItemComponents>> outerMap, String listToPrintItemsFrom) {
+    public static void printAllUncompletedItemsOfList(HashMap<String, HashMap<String, Application_ItemStorage.ItemComponents>> outerMap, String listToPrintItemsFrom) {
         for(int i = 0; i < outerMap.get(listToPrintItemsFrom).size(); i++) {
             String currentItem = (String) outerMap.get(listToPrintItemsFrom).keySet().toArray()[i];
 
@@ -475,67 +475,78 @@ public class ToDoListApp_SystemEdition {
         }
     }
 
-    public static String saveListFunction(HashMap<String, HashMap<String, HelloApplication_ItemStorage.ItemComponents>> outerMap, Scanner listToSaveInput, String listToSave) throws IOException {
+    public static String saveListFunction(HashMap<String, HashMap<String, Application_ItemStorage.ItemComponents>> outerMap, Scanner listToSaveInput, String listToSave) throws IOException {
         File saveListFile = new File("src\\main\\java\\ucf\\assignments\\saveListFile.txt");
         boolean saveListFileCreated = saveListFile.createNewFile();
         FileWriter saveListFileOutput = new FileWriter(saveListFile);
 
-        if(saveListFileCreated) {
-            if(saveListFile.exists()) {
-                saveListFileOutput.write("List: " + outerMap.get(listToSave));
-                for(int i = 0; i < outerMap.get(listToSave).size(); i++) {
-                    String currentItem = (String) outerMap.get(listToSave).keySet().toArray()[i];
+        if(outerMap.size() != 0) {
+            if (saveListFileCreated) {
+                if (saveListFile.exists()) {
+                    saveListFileOutput.write("List: " + listToSave);
+                    for (int i = 0; i < outerMap.get(listToSave).size(); i++) {
+                        String currentItem = (String) outerMap.get(listToSave).keySet().toArray()[i];
 
-                    String currentItemTitle = outerMap.get(listToSave).get(currentItem).getItemTitle();
-                    saveListFileOutput.write("\nItem: " + currentItemTitle);
+                        String currentItemTitle = outerMap.get(listToSave).get(currentItem).getItemTitle();
+                        saveListFileOutput.write("\nItem: " + currentItemTitle);
 
-                    String currentItemDesc = outerMap.get(listToSave).get(currentItem).getItemDescription();
-                    saveListFileOutput.write(", " + currentItemDesc);
+                        String currentItemDesc = outerMap.get(listToSave).get(currentItem).getItemDescription();
+                        saveListFileOutput.write(", " + currentItemDesc);
 
-                    String currentItemDeadline = outerMap.get(listToSave).get(currentItem).getItemDueDate();
-                    saveListFileOutput.write(", " + currentItemDeadline);
+                        String currentItemDeadline = outerMap.get(listToSave).get(currentItem).getItemDueDate();
+                        saveListFileOutput.write(", " + currentItemDeadline);
 
-                    String currentItemCompletionFlag = outerMap.get(listToSave).get(currentItem).getItemCompletionFlag();
-                    saveListFileOutput.write(", " + currentItemCompletionFlag + "\n");
+                        String currentItemCompletionFlag = outerMap.get(listToSave).get(currentItem).getItemCompletionFlag();
+                        saveListFileOutput.write(", " + currentItemCompletionFlag + "\n");
+                    }
                 }
+
+                saveListFileOutput.write("\n");
             }
-            saveListFileOutput.write("\n");
+
+            saveListFileOutput.close();
+
+            System.out.println("Would you like to save another list (y/n)?");
         }
-
-        saveListFileOutput.close();
-
-        System.out.println("Would you like to save another list (y/n)?");
+        else {
+            System.out.println("There are no lists available to save.");
+        }
 
         return listToSaveInput.next();
     }
 
-    public static String loadListFunction(HashMap<String, HashMap<String, HelloApplication_ItemStorage.ItemComponents>> outerMap, Scanner listToLoadInput, String listToLoad) throws IOException {
+    public static String loadListFunction(HashMap<String, HashMap<String, Application_ItemStorage.ItemComponents>> outerMap, Scanner listToLoadInput, String listToLoad) throws IOException {
         File loadListFile = new File("src\\main\\java\\ucf\\assignments\\saveListFile.txt");
         BufferedReader loadListFileReader = new BufferedReader(new FileReader (loadListFile));
 
-        for(int i = 0; i < loadListFile.length(); i++) {
-            String currentLine = loadListFileReader.readLine();
-            if(currentLine.contains(listToLoad)) {
-                HashMap<String, HelloApplication_ItemStorage.ItemComponents> innerMap = new HashMap<>();
-                outerMap.put(listToLoad, innerMap);
+        if(loadListFileReader.readLine() != null) {
+            for (int i = 0; i < loadListFile.length(); i++) {
+                String currentLine = loadListFileReader.readLine();
+                if (currentLine.contains(listToLoad)) {
+                    HashMap<String, Application_ItemStorage.ItemComponents> innerMap = new HashMap<>();
+                    outerMap.put(listToLoad, innerMap);
 
-                String itemDetails = loadListFileReader.readLine();
-                itemDetails = itemDetails.replace("Item: ", "");
-                String[] itemDetailsSplit = itemDetails.split(", ");
+                    String itemDetails = loadListFileReader.readLine();
+                    itemDetails = itemDetails.replace("Item: ", "");
+                    String[] itemDetailsSplit = itemDetails.split(", ");
 
-                HelloApplication_ItemStorage.ItemComponents itemStorage = new HelloApplication_ItemStorage.ItemComponents();
+                    Application_ItemStorage.ItemComponents itemStorage = new Application_ItemStorage.ItemComponents();
 
-                itemStorage.setItemTitle(itemDetailsSplit[0]);
-                itemStorage.setItemDescription(itemDetailsSplit[1]);
-                itemStorage.setItemDueDate(itemDetailsSplit[2]);
-                itemStorage.setItemCompletionFlag(itemDetailsSplit[3]);
+                    itemStorage.setItemTitle(itemDetailsSplit[0]);
+                    itemStorage.setItemDescription(itemDetailsSplit[1]);
+                    itemStorage.setItemDueDate(itemDetailsSplit[2]);
+                    itemStorage.setItemCompletionFlag(itemDetailsSplit[3]);
 
-                innerMap.put(itemDetailsSplit[0], itemStorage);
-                outerMap.put(listToLoad, innerMap);
+                    innerMap.put(itemDetailsSplit[0], itemStorage);
+                    outerMap.put(listToLoad, innerMap);
+                }
             }
-        }
 
-        System.out.println("Would you like to load another list (y/n)?");
+            System.out.println("Would you like to load another list (y/n)?");
+        }
+        else {
+            System.out.println("There are no lists available to save.");
+        }
 
         return listToLoadInput.next();
     }

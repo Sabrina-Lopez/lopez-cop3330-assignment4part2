@@ -24,7 +24,7 @@ tasks.withType(JavaCompile) {
 
 application {
     mainModule = 'ucf.assignments'
-    mainClass = 'ucf.assignments.HelloApplication'
+    mainClass = 'ucf.assignments.Application'
 }
 
 javafx {
