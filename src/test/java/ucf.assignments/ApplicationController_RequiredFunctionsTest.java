@@ -5,15 +5,17 @@ package ucf.assignments;
  *  Copyright 2021 Sabrina Lopez
  */
 
+//establish any necessary imports
 import org.junit.Test;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import static org.junit.jupiter.api.Assertions.*;
 
+//declare and create the class, ApplicationController_RequiredFunctionsTest, to hold the test code that tests the functions in the ApplicationController_RequiredFunctions
 public class ApplicationController_RequiredFunctionsTest  {
     @Test
+    //declare and create main() method to store the test code
     public void main() throws IOException {
         //declare testOuterMap, a variable of the HashMap<String, Application_ItemStorage.ItemComponents> class to hold the list of items
         // and their respective information (e.g., title, description, deadline, completion status) within a copy of the ItemComponents struct
