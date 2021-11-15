@@ -12,7 +12,7 @@ repositories {
 }
 
 ext {
-    junitVersion = '5.7.1'
+    junitVersion = '5.8.1'
 }
 
 sourceCompatibility = '16'
@@ -34,6 +34,9 @@ javafx {
 
 dependencies {
 
+    implementation 'junit:junit:4.13.2'
+    implementation 'org.junit.platform:junit-platform-launcher:1.8.1'
+    implementation 'org.junit.vintage:junit-vintage-engine:5.8.1'
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }

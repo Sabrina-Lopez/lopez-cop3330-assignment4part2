@@ -5,7 +5,8 @@ package ucf.assignments;
 //utilizing output and user input through the system rather than the GUI
 
 import java.io.*;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Scanner;
 
 public class ToDoListApp_SystemEdition {
     public static void main(String[] args) throws IOException {
@@ -192,13 +193,19 @@ public class ToDoListApp_SystemEdition {
 
             while(loadListResponse.equals("y")) {
                 File loadListFile = new File("src\\main\\java\\ucf\\assignments\\saveListFile.txt");
-                BufferedReader loadListFileReader = new BufferedReader(new FileReader (loadListFile));
 
+                BufferedReader loadListFileLineCounter = new BufferedReader(new FileReader(loadListFile));
+                int loadListFileNumLines = 0;
+                while (loadListFileLineCounter.readLine() != null) {
+                    loadListFileNumLines++;
+                }
+
+                BufferedReader loadListFileReader = new BufferedReader(new FileReader (loadListFile));
                 Scanner listToLoadInput = new Scanner(System.in);
                 System.out.println("Which of the following lists would you like to load? Please input the exact name of the list.");
-                for(int i = 0; i < loadListFile.length(); i++) { //would need to be changed to the list read from the external file
+                for(int i = 0; i < (loadListFileNumLines + 1); i++) {
                     String currentLine = loadListFileReader.readLine();
-                    if(currentLine.contains("L")) {
+                    if(currentLine.contains("List: ")) {
                         String currentListTitle = currentLine.replace("List: ", "");
                         System.out.println(currentListTitle);
                     }
@@ -267,7 +274,7 @@ public class ToDoListApp_SystemEdition {
 
         itemStorage.setItemTitle(itemTitle);
         itemStorage.setItemDescription(itemDesc);
-        itemStorage.setItemDueDate(itemDeadline);
+        itemStorage.setItemDeadline(itemDeadline);
         itemStorage.setItemCompletionFlag(itemCompletionStatus);
 
         innerMap.put(itemTitle, itemStorage);
@@ -347,7 +354,7 @@ public class ToDoListApp_SystemEdition {
             Scanner newItemDeadlineInput = new Scanner(System.in);
             System.out.println("What do you want the new deadline of the item to be? Please input it as the following format: YYYY-MM-DD.");
             String newItemDeadline = newItemDeadlineInput.next();
-            outerMap.get(listToEditItemOf).get(itemToEdit).setItemDueDate(newItemDeadline);
+            outerMap.get(listToEditItemOf).get(itemToEdit).setItemDeadline(newItemDeadline);
         }
 
         Scanner changeItemCompletionStatusResponseInput = new Scanner(System.in);
@@ -432,7 +439,7 @@ public class ToDoListApp_SystemEdition {
                 String currentItemDescription = outerMap.get(currentList).get(currentItem).getItemDescription();
                 System.out.println(currentItemDescription);
 
-                String currentItemDueDate = outerMap.get(currentList).get(currentItem).getItemDueDate();
+                String currentItemDueDate = outerMap.get(currentList).get(currentItem).getItemDeadline();
                 System.out.println(currentItemDueDate);
 
                 String currentItemCompletionStatus = outerMap.get(currentList).get(currentItem).getItemCompletionFlag();
@@ -493,7 +500,7 @@ public class ToDoListApp_SystemEdition {
                         String currentItemDesc = outerMap.get(listToSave).get(currentItem).getItemDescription();
                         saveListFileOutput.write(", " + currentItemDesc);
 
-                        String currentItemDeadline = outerMap.get(listToSave).get(currentItem).getItemDueDate();
+                        String currentItemDeadline = outerMap.get(listToSave).get(currentItem).getItemDeadline();
                         saveListFileOutput.write(", " + currentItemDeadline);
 
                         String currentItemCompletionFlag = outerMap.get(listToSave).get(currentItem).getItemCompletionFlag();
@@ -519,7 +526,7 @@ public class ToDoListApp_SystemEdition {
         File loadListFile = new File("src\\main\\java\\ucf\\assignments\\saveListFile.txt");
         BufferedReader loadListFileReader = new BufferedReader(new FileReader (loadListFile));
 
-        if(loadListFileReader.readLine() != null) {
+        if((loadListFile.exists()) && (loadListFileReader.readLine() != null)) {
             for (int i = 0; i < loadListFile.length(); i++) {
                 String currentLine = loadListFileReader.readLine();
                 if (currentLine.contains(listToLoad)) {
@@ -534,7 +541,7 @@ public class ToDoListApp_SystemEdition {
 
                     itemStorage.setItemTitle(itemDetailsSplit[0]);
                     itemStorage.setItemDescription(itemDetailsSplit[1]);
-                    itemStorage.setItemDueDate(itemDetailsSplit[2]);
+                    itemStorage.setItemDeadline(itemDetailsSplit[2]);
                     itemStorage.setItemCompletionFlag(itemDetailsSplit[3]);
 
                     innerMap.put(itemDetailsSplit[0], itemStorage);
