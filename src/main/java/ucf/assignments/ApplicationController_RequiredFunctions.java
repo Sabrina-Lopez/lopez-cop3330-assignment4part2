@@ -20,7 +20,7 @@ public class ApplicationController_RequiredFunctions extends Application {
         itemStorage.setItemTitle(itemTitle); //using the setItemTitle() method, set the item title of the new item w/ the user's inputted item title
         itemStorage.setItemDescription(itemDesc); //using the setItemDescription() method, set the item description of the new item w/ the user's inputted item description
         itemStorage.setItemDeadline(itemDeadline); //using the setItemDeadline() method, set the item deadline of the new item w/ the user's inputted item deadline
-        itemStorage.setItemCompletionFlag(itemCompletionStatus); //using the setItemCompletionFlag() method, set the item completion status of the new item w/ the user's inputted item completion status
+        itemStorage.setItemCompletionStatus(itemCompletionStatus); //using the setItemCompletionStatus() method, set the item completion status of the new item w/ the user's inputted item completion status
 
         //input the new item into the hashmap, its title being the key and the itemComponents struct as the value to refer to the individual item details later
         outerMap.put(itemTitle, itemStorage);
@@ -32,7 +32,7 @@ public class ApplicationController_RequiredFunctions extends Application {
         outerMap.get(newItemTitle).setItemTitle(newItemTitle); //using the get() and setItemTitle() methods, change the item title of the newly edited item to the new one that the user inputted
         outerMap.get(newItemTitle).setItemDescription(newItemDesc); //using the get() and setItemTitle() methods, change the item description of the newly edited item to the new one that the user inputted
         outerMap.get(newItemTitle).setItemDeadline(newItemDeadline); //using the get() and setItemTitle() methods, change the item deadline of the newly edited item to the new one that the user inputted
-        outerMap.get(newItemTitle).setItemCompletionFlag(newItemCompletionStatus); //using the get() and setItemTitle() methods, change the item completion status of the newly edited item to the new one that the user inputted
+        outerMap.get(newItemTitle).setItemCompletionStatus(newItemCompletionStatus); //using the get() and setItemTitle() methods, change the item completion status of the newly edited item to the new one that the user inputted
     }
 
     //declare and create the function removeItemFunction, a void function that takes in the user-inputted item information from the GUI and removes an item from the hashmap
@@ -70,7 +70,7 @@ public class ApplicationController_RequiredFunctions extends Application {
         for(int i = 0; i < outerMap.size(); i++) { //for the current index of the hashmap and until all the indexes of the hashmap have been gone through
             String currentItem = (String) outerMap.keySet().toArray()[i]; //using the keySet().toArray() method, get the key of hashmap at the numHashmapItems index
 
-            if(outerMap.get(currentItem).getItemCompletionFlag().equals("1")) { //using the get(), getItemCompletionFlag(), and equals() methods, determine if the current item's completion status is completed
+            if(outerMap.get(currentItem).getItemCompletionStatus().equals("1")) { //using the get(), getItemCompletionStatus(), and equals() methods, determine if the current item's completion status is completed
                 allCompletedItems = allCompletedItems + currentItem + "\n"; //if so, concatenate the currentItem to the allCompletedItems String
             }
         }
@@ -85,7 +85,7 @@ public class ApplicationController_RequiredFunctions extends Application {
         for(int i = 0; i < outerMap.size(); i++) { //for the current index of the hashmap and until all the indexes of the hashmap have been gone through
             String currentItem = (String) outerMap.keySet().toArray()[i]; //using the keySet().toArray() method, get the key of hashmap at the numHashmapItems index
 
-            if(outerMap.get(currentItem).getItemCompletionFlag().equals("0")) { //using the get(), getItemCompletionFlag(), and equals() methods, determine if the current item's completion status is uncompleted
+            if(outerMap.get(currentItem).getItemCompletionStatus().equals("0")) { //using the get(), getItemCompletionStatus(), and equals() methods, determine if the current item's completion status is uncompleted
                 allUncompletedItems = allUncompletedItems + currentItem + "\n"; //if so, concatenate the currentItem to the allUncompletedItems String
             }
         }
@@ -114,8 +114,8 @@ public class ApplicationController_RequiredFunctions extends Application {
                 String currentItemDeadline = outerMap.get(currentItem).getItemDeadline(); //using the get() and getItemDeadline() methods, get the current item's item deadline from the ItemComponents struct
                 saveListFileOutput.write(", " + currentItemDeadline); //using the write() method, write the item deadline into the external file
 
-                String currentItemCompletionFlag = outerMap.get(currentItem).getItemCompletionFlag(); //using the get() and getItemCompletionStatus() methods, get the current item's completion status title from the ItemComponents struct
-                saveListFileOutput.write(", " + currentItemCompletionFlag + "\n"); //using the write() method, write the item completion status into the external file
+                String currentItemCompletionStatus = outerMap.get(currentItem).getItemCompletionStatus(); //using the get() and getItemCompletionStatus() methods, get the current item's completion status title from the ItemComponents struct
+                saveListFileOutput.write(", " + currentItemCompletionStatus + "\n"); //using the write() method, write the item completion status into the external file
             }
         }
 
@@ -153,7 +153,7 @@ public class ApplicationController_RequiredFunctions extends Application {
                 itemStorage.setItemTitle(itemDetailsSplit[0]); //using the setItemTitle() method, set the item title of the newly loaded item w/ the user's inputted item title
                 itemStorage.setItemDescription(itemDetailsSplit[1]); //using the setItemDescription() method, set the item description of the newly loaded item w/ the user's inputted item description
                 itemStorage.setItemDeadline(itemDetailsSplit[2]); //using the setItemDeadline() method, set the item deadline of the newly loaded item w/ the user's inputted item deadline
-                itemStorage.setItemCompletionFlag(itemDetailsSplit[3]); //using the setItemCompletionFlag() method, set the item completion status of the newly loaded item w/ the user's inputted item completion status
+                itemStorage.setItemCompletionStatus(itemDetailsSplit[3]); //using the setItemCompletionStatus() method, set the item completion status of the newly loaded item w/ the user's inputted item completion status
 
                 //input the newly loaded item into the hashmap, its title being the key and the itemComponents struct as the value to refer to the individual item details later
                 outerMap.put(itemDetailsSplit[0], itemStorage);

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" prefHeight="400" prefWidth="600" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.ApplicationController_UserInteractiveFunctions">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <children>
+      <Label text="Remove Item">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <bottom>
+            <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <items>
+                <Button onAction="#onBackToHomeClick" mnemonicParsing="false" text="Back to Home" />
+                  <Button onAction="#onRemoveOneItemClick" mnemonicParsing="false" text="Remove One Item" />
+                  <Button onAction="#onRemoveAllItemsClick" mnemonicParsing="false" text="Remove All Items" />
+              </items>
+            </ToolBar>
+         </bottom>
+         <center>
+            <Label text="Please choose whether you would like to delete only one item or all the items." BorderPane.alignment="CENTER" />
+         </center></BorderPane>
+   </children>
+
+
+</VBox>

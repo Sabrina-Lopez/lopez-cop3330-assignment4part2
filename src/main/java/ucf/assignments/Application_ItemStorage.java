@@ -10,7 +10,7 @@ public class Application_ItemStorage extends Application {
         private String itemTitle; //declare a String variable, itemTitle, to hold the name or title of the item
         private String itemDeadline; //declare a String variable, itemDeadline, to hold the deadline of the item
         private String itemDescription; //declare a String variable, itemDescription, to hold the description of the item
-        private String itemCompletionFlag; //declare an Integer variable, itemCompletionFlag, to hold whether the item has been marked in its respective checkbox or not
+        private String itemCompletionStatus; //declare an Integer variable, itemCompletionStatus, to hold whether the item has been marked in its respective checkbox or not
 
         public String getItemTitle() {
             return itemTitle; //return the item title to the function to retrieve the item title from the constructor
@@ -36,12 +36,12 @@ public class Application_ItemStorage extends Application {
             this.itemDescription = newItemDescription; //use the this.(object) method to take the user input and place it into the item description variable in the constructor
         } //create setter for item's description
 
-        public String getItemCompletionFlag() {
-            return itemCompletionFlag; //return the item completion status to the function to retrieve the item completion status from the constructor
-        } //create getter for item's completion flag / checkbox marker
+        public String getItemCompletionStatus() {
+            return itemCompletionStatus; //return the item completion status to the function to retrieve the item completion status from the constructor
+        } //create getter for item's completion Status / checkbox marker
 
-        public void setItemCompletionFlag(String itemCompletionFlag) { //create setter for item's completion flag / checkbox marker
-            this.itemCompletionFlag = itemCompletionFlag; //use the this.(object) method to take the user input and place it into the item completion status variable in the constructor
+        public void setItemCompletionStatus(String itemCompletionStatus) { //create setter for item's completion Status / checkbox marker
+            this.itemCompletionStatus = itemCompletionStatus; //use the this.(object) method to take the user input and place it into the item completion status variable in the constructor
         }
     }
 }

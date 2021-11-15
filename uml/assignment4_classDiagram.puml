@@ -1,27 +1,445 @@
 @startuml
-'https://plantuml.com/class-diagram
+'https://plantuml.com/class-diagram'
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
-
-List <|-- AbstractList
-Collection <|-- AbstractCollection
-
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-Object[] elementData
-size()
+class Application {
+    main : public static void
+    start : public void
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+class main {
+    launch()
 }
+
+class start {
+    root : Parent
+    FXMLLoader.load(Objects.requireNonNull(getClass().getResource("welcomeScreen.fxml")))
+    scene : Scene
+    Scene(root)
+    stage.setScene(scene)
+    stage.setTitle("To-Do App")
+    stage.show()
+}
+
+class Application_ItemStorage {
+    ItemComponents : public static class
+}
+
+class ItemComponents {
+    itemTitle : private String
+    itemDeadline : private String
+    itemDescription : private String
+    itemCompletionFlag : private String
+
+    getItemTitle : public String
+    setItemTitle : public void
+
+    getItemDeadline : public String
+    setItemDeadline : public void
+
+    getItemDescription : public String
+    setItemDescription : public void
+
+    getItemCompletionFlag : public String
+    setItemCompletionFlag : public void
+}
+
+class setItemTitle {
+    this.itemTitle
+}
+
+class setItemDeadline {
+    this.itemDeadline
+}
+
+class setItemDescription {
+    this.itemDescription
+}
+
+class setItemCompletionFlag {
+    this.itemCompletionFlag
+}
+
+class ApplicationController_RequiredFunctions {
+
+}
+
+class addToDoList {
+    outerMap.put(toDoListTitle, innerMap)
+}
+
+class removeToDoList {
+    outerMap.remove(toDoListTitle, innerMap)
+}
+
+class editToDoListTitle {
+    copyOfItems : HashMap<String, ItemComponents>
+    outerMap.remove(oldToDoListTitle)
+    outerMap.put(newToDoListTitle, copyOfItems)
+}
+
+class addItem {
+    itemComponents : ItemComponents
+    itemComponents.setItemTitle(itemTitle)
+    itemComponents.setItemDeadline(itemDeadline)
+    itemComponents.setItemDescription(itemDescription)
+    innerMap.put(itemTitle, itemComponents)
+}
+
+class removeItem {
+    itemComponents : ItemComponents
+    innerMap.remove(itemTitle, itemComponents)
+}
+
+class editItemTitle {
+    copyOfItems : ItemComponents
+    innerMap.remove(oldItemTitle)
+    innerMap.put(newItemTitle, copyOfItems)
+}
+
+class editItemDeadline {
+    itemComponents : ItemComponents
+    itemComponents.setItemDeadline(itemDeadline)
+    innerMap.put(itemTitle, itemComponents)
+}
+
+class editItemDescription {
+    itemComponents : ItemComponents
+    itemComponents.setItemDescription(itemDescription)
+    innerMap.put(itemTitle, itemComponents)
+}
+
+class editItemCompletionStatus {
+    itemComponents : ItemComponents
+    itemComponents.setItemCompletionFlag(itemCompletionStatus)
+    innerMap.put(itemTitle, itemComponents)
+}
+
+class ApplicationController_UserInteractionFunctions {
+    currentLists : private BorderPane
+    currentItemsOfList : private BorderPane
+    currentComponentsOfItem : private BorderPane
+
+    userToDoListTitleInput : private TextField
+    userItemTitleInput : private TextField
+    userItemDeadlineInput : private TextField
+    userItemDescriptionInput : private TextField
+    userItemCompletionStatusInput : private TextField
+
+    currentToDoListTitle : String
+    currentItemDescription : String
+    currentItemDeadline : String
+    currentItemCompletionStatus : String
+
+    onMakeListClick : protected void
+    onEditListClick : protected void
+    onSubmitNewListClick : protected void
+    onSubmitEditedListClick : protected void
+    onDeleteListClick : protected void
+
+    onMakeItemClick : protected void
+    onEditItemClick : protected void
+    onSubmitNewItemClick : protected void
+    onSubmitEditedItemClick : protected void
+    onDeleteItemClick : protected void
+
+    externalListsFileCreated : boolean
+
+    onSaveListsClick : protected void
+    onLoadListsClick : protected void
+
+    onBackToHomeClick : protected void
+    onBackToListClick : protected void
+    onBackToItemClick : protected void
+
+    onViewCompletedItemsClick : protected BorderPane
+    onViewUncompletedItemsClick : protected BorderPane
+
+    displayCurrentLists : protected void
+    displayCurrentItems : protected void
+    displayCurrentItemComponents : protected void
+}
+
+class onMakeListClick {
+    root : Parent
+    FXMLLoader.load(Objects.requireNonNull(getClass().getResource("makeToDoListScreen.fxml")))
+    scene : Scene
+    Scene(root)
+    stage : Stage
+    ((Node) event.getSource()).getScene().getWindow()
+    stage.setScene(scene)
+    stage.show()
+}
+
+class onEditListClick {
+    root : Parent
+    FXMLLoader.load(Objects.requireNonNull(getClass().getResource("editToDoListScreen.fxml")))
+    scene : Scene
+    Scene(root)
+    stage : Stage
+    ((Node) event.getSource()).getScene().getWindow()
+    stage.setScene(scene)
+    stage.show()
+    userToDoListTitleInput.getText()
+}
+
+class onSubmitNewListClick {
+    userToDoListTitleInput.getText()
+    addToDoList(toDoListTitle, outerMap, innerMap)
+    root : Parent
+    FXMLLoader.load(Objects.requireNonNull(getClass().getResource("welcomeScreen.fxml")))
+    scene : Scene
+    Scene(root)
+    stage : Stage
+    ((Node) event.getSource()).getScene().getWindow()
+    stage.setScene(scene)
+    stage.show()
+}
+class onSubmitEditedListClick {
+    oldToDoListTitle : String
+    userToDoListTitleInput.getText()
+    editToDoListTitle(oldToDoListTitle, currentToDoListTitle, outerMap)
+    root : Parent
+    FXMLLoader.load(Objects.requireNonNull(getClass().getResource("welcomeScreen.fxml")))
+    scene : Scene
+    Scene(root)
+    stage : Stage
+    ((Node) event.getSource()).getScene().getWindow()
+    stage.setScene(scene)
+    stage.show()
+}
+
+class onDeleteListClick {
+    removeToDoList(outerMap, innerMap, currentToDoListTitle)
+}
+
+class onMakeItemClick {
+    root : Parent
+    FXMLLoader.load(Objects.requireNonNull(getClass().getResource("makeItemScreen.fxml")))
+    scene : Scene
+    Scene(root)
+    stage : Stage
+    ((Node) event.getSource()).getScene().getWindow()
+    stage.setScene(scene)
+    stage.show()
+}
+
+class onEditItemClick {
+    root : Parent
+    FXMLLoader.load(Objects.requireNonNull(getClass().getResource("editItemScreen.fxml")))
+    scene : Scene
+    Scene(root)
+    stage : Stage
+    ((Node) event.getSource()).getScene().getWindow()
+    stage.setScene(scene)
+    stage.show()
+    userItemTitleInput.getText()
+}
+
+class onSubmitNewItemClick {
+    userItemTitleInput.getText()
+    userItemDeadlineInput.getText()
+    userItemDescriptionInput.getText()
+    userItemCompletionStatusInput.getText()
+    addItem(innerMap, currentItemTitle, currentItemDeadline, currentItemDescription, currentItemCompletionStatus)
+    root : Parent
+    FXMLLoader.load(Objects.requireNonNull(getClass().getResource("toDoListScreen.fxml")))
+    scene : Scene
+    Scene(root)
+    stage : Stage
+    ((Node) event.getSource()).getScene().getWindow()
+    stage.setScene(scene)
+    stage.show()
+}
+
+class onSubmitEditedItemClick {
+    userItemTitleInput.getText()
+    userItemDeadlineInput.getText()
+    userItemDescriptionInput.getText()
+    userItemCompletionStatusInput.getText()
+    editItemTitle(oldItemTitle, currentItemTitle, innerMap)
+    editItemDeadline(innerMap, currentItemTitle, currentItemDeadline)
+    editItemDescription(innerMap, currentItemTitle, currentItemDescription)
+    editItemCompletionStatus(innerMap, currentItemTitle, currentItemCompletionStatus)
+    root : Parent
+    FXMLLoader.load(Objects.requireNonNull(getClass().getResource("toDoListScreen.fxml")))
+    scene : Scene
+    Scene(root)
+    stage : Stage
+    ((Node) event.getSource()).getScene().getWindow()
+    stage.setScene(scene)
+    stage.show()
+}
+
+class onDeleteItemClick {
+    removeItem(innerMap, currentItemTitle)
+}
+
+class onSaveListsClick {
+    externalListsFile : File
+    externalListsFile.createNewFile()
+    externalListsFileOutput : FileWriter
+    removeToDoList(outerMap, innerMap, currentToDoListTitle)
+}
+
+class onLoadListsClick {
+    assertTrue(externalListsFileCreated)
+    addToDoList(currentToDoListTitle, outerMap, innerMap)
+}
+
+class onBackToHomeClick {
+    root : Parent
+    FXMLLoader.load(Objects.requireNonNull(getClass().getResource("welcomeScreen.fxml")))
+    scene : Scene
+    Scene(root)
+    stage : Stage
+    ((Node) event.getSource()).getScene().getWindow()
+    stage.setScene(scene)
+    stage.show()
+}
+
+class onBackToListClick {
+    root : Parent
+    FXMLLoader.load(Objects.requireNonNull(getClass().getResource("toDoListScreen.fxml")))
+    scene : Scene
+    Scene(root)
+    stage : Stage
+    ((Node) event.getSource()).getScene().getWindow()
+    stage.setScene(scene)
+    stage.show()
+}
+
+class onBackToItemClick {
+    root : Parent
+    FXMLLoader.load(Objects.requireNonNull(getClass().getResource("itemScreen.fxml")))
+    scene : Scene
+    Scene(root)
+    stage : Stage
+    ((Node) event.getSource()).getScene().getWindow()
+    stage.setScene(scene)
+    stage.show()
+}
+
+class onViewCompletedItemsClick {
+    HashMap.Entry<String, Application_ItemStorage.ItemComponents> entry : innerMap.entrySet()
+    entry.getValue().getItemCompletionFlag().equals("1")
+    currentItem : Text
+    Text(entry.getKey())
+    currentCompletedItems.getChildren().add(currentItem)
+}
+
+class onViewUncompletedItemsClick {
+    HashMap.Entry<String, Application_ItemStorage.ItemComponents> entry : innerMap.entrySet()
+    entry.getValue().getItemCompletionFlag().equals("0")
+    currentItem : Text
+    Text(entry.getKey())
+    currentUncompletedItems.getChildren().add(currentItem)
+}
+
+class displayCurrentLists {
+    HashMap.Entry<String, HashMap<String, Application_ItemStorage.ItemComponents>> entry : outerMap.entrySet()
+    currentList : Text
+    Text(entry.getKey())
+    currentLists.getChildren().add(currentList)
+}
+
+class displayCurrentItems {
+    HashMap.Entry<String, Application_ItemStorage.ItemComponents> entry : innerMap.entrySet()
+    currentItem : Text
+    Text(entry.getKey())
+    currentItemsOfList.getChildren().add(currentItem)
+}
+
+class displayCurrentItemComponents {
+    currentItemComponent_title : Text
+    Text(innerMap.get(currentItemTitle).getItemTitle())
+    currentComponentsOfItem.getChildren().add(currentItemComponent_title)
+
+    currentItemComponent_deadline : Text
+    Text(innerMap.get(currentItemTitle).getItemDeadline())
+    currentComponentsOfItem.getChildren().add(currentItemComponent_deadline)
+
+    currentItemComponent_description : Text
+    Text(innerMap.get(currentItemTitle).getItemDescription())
+    currentComponentsOfItem.getChildren().add(currentItemComponent_description)
+
+    currentItemComponent_completionStatus : Text
+    Text(innerMap.get(currentItemTitle).getItemCompletionFlag())
+    currentComponentsOfItem.getChildren().add(currentItemComponent_completionStatus)
+}
+
+Application_ItemStorage -- Application : extends >
+ApplicationController_BackgroundFunctions -- Application : extends >
+ApplicationController_UserInteractionFunctions -- ApplicationController_BackgroundFunctions : extends >
+
+Application -- main : contains >
+Application -- start : contains >
+
+Application_ItemStorage -- ItemComponents : contains >
+ItemComponents -- setItemTitle : contains >
+ItemComponents -- setItemDeadline : contains >
+ItemComponents -- setItemDescription : contains >
+ItemComponents -- setItemCompletionFlag : contains >
+
+ApplicationController_BackgroundFunctions -- addToDoList : contains >
+ApplicationController_BackgroundFunctions -- removeToDoList : contains >
+ApplicationController_BackgroundFunctions -- editToDoListTitle : contains >
+ApplicationController_BackgroundFunctions -- addItem : contains >
+ApplicationController_BackgroundFunctions -- removeItem : contains >
+ApplicationController_BackgroundFunctions -- editItemTitle : contains >
+ApplicationController_BackgroundFunctions -- editItemDeadline : contains >
+ApplicationController_BackgroundFunctions -- editItemDescription : contains >
+ApplicationController_BackgroundFunctions -- editItemCompletionStatus : contains >
+
+ApplicationController_UserInteractionFunctions -- onMakeListClick : contains >
+ApplicationController_UserInteractionFunctions -- onSubmitNewListClick : contains >
+ApplicationController_UserInteractionFunctions -- onEditListClick : contains >
+ApplicationController_UserInteractionFunctions -- onSubmitEditedListClick : contains >
+ApplicationController_UserInteractionFunctions -- onDeleteListClick : contains >
+
+ApplicationController_UserInteractionFunctions -- onMakeItemClick : contains >
+ApplicationController_UserInteractionFunctions -- onSubmitNewItemClick : contains >
+ApplicationController_UserInteractionFunctions -- onEditItemClick : contains >
+ApplicationController_UserInteractionFunctions -- onSubmitEditedItemClick : contains >
+ApplicationController_UserInteractionFunctions -- onDeleteItemClick : contains >
+
+ApplicationController_UserInteractionFunctions -- onSaveListsClick : contains >
+ApplicationController_UserInteractionFunctions -- onLoadListsClick : contains >
+
+ApplicationController_UserInteractionFunctions -- onBackToHomeClick : contains >
+ApplicationController_UserInteractionFunctions -- onBackToListClick : contains >
+ApplicationController_UserInteractionFunctions -- onBackToItemClick : contains >
+
+ApplicationController_UserInteractionFunctions -- onViewCompletedItemsClick : contains >
+ApplicationController_UserInteractionFunctions -- onViewUncompletedItemsClick : contains >
+
+ApplicationController_UserInteractionFunctions -- displayCurrentLists : contains >
+ApplicationController_UserInteractionFunctions -- displayCurrentItems : contains >
+ApplicationController_UserInteractionFunctions -- displayCurrentItemComponents : contains >
+
+addItem -- ItemComponents : adds an item's details into >
+removeItem -- ItemComponents : removes an item's details from >
+editItemTitle -- ItemComponents : edits the title of an item in >
+editItemDeadline -- ItemComponents : edits the due date of an item in >
+editItemDescription -- ItemComponents : edits the description of an item in >
+editItemCompletionStatus -- ItemComponents : edits the completion status of an item in >
+
+onSubmitNewListClick -- addToDoList : has function call for >
+onSubmitEditedListClick -- editToDoListTitle : has function call for >
+onDeleteListClick -- removeToDoList : has function call for >
+
+onSubmitNewItemClick -- addItem : has function call for >
+onSubmitEditedItemClick -- editItemTitle : has function call for >
+onSubmitEditedItemClick -- editItemDeadline : has function call for >
+onSubmitEditedItemClick -- editItemDescription : has function call for >
+onSubmitEditedItemClick -- editItemCompletionStatus : has function call for >
+onDeleteItemClick -- removeItem : has function call for >
+
+onSaveListsClick -- removeToDoList : has function call for >
+onLoadListsClick -- addToDoList : has function call for >
+
+onViewCompletedItemsClick -- ItemComponents : gets completed items based on their completion status in >
+onViewUncompletedItemsClick -- ItemComponents : gets uncompleted items based on their completion status in >
+
+displayCurrentItemComponents -- ItemComponents : displays an item's components from its respective constructor in >
 
 @enduml

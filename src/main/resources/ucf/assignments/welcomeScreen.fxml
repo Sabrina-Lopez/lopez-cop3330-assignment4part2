@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.ApplicationController_UserInteractiveFunctions">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <children>
+      <Label text="Welcome to the To-Do List App">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <top>
+            <Label text="List of Items" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </top>
+         <bottom>
+            <Label maxHeight="200.0" maxWidth="400.0" prefWidth="400" text="Below, input a item title to edit, remove, or show an item." textAlignment="CENTER" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="11.0" />
+               </font></Label>
+         </bottom>
+         <center>
+            <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <content>
+                  <TextArea fx:id="welcomeScreenItemsList" disable="true" prefHeight="200" prefWidth="600" />
+               </content></ScrollPane>
+         </center></BorderPane>
+      <TextField fx:id="userSelectedItem" maxHeight="200.0" maxWidth="150.0" onAction="#takeUserSelectedItem" promptText="Item Title" />
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+        <items>
+          <Button mnemonicParsing="false" onAction="#onMakeItemClick" text="Make Item" />
+            <Button mnemonicParsing="false" onAction="#onEditItemClick" text="Edit Item" />
+            <Button mnemonicParsing="false" onAction="#onRemoveItemClick" text="Remove Item" />
+            <Button mnemonicParsing="false" onAction="#onShowItemDetailsClick" text="Show Item Details" />
+            <Button mnemonicParsing="false" onAction="#onShowCompletedItemsClick" text="Show Completed Items" />
+            <Button mnemonicParsing="false" onAction="#onShowUncompletedItemsClick" text="Show Uncompleted Items" />
+            <Button mnemonicParsing="false" onAction="#onSaveItemsClick" text="Save Items" />
+            <Button mnemonicParsing="false" onAction="#onLoadItemsClick" text="Load Items" />
+        </items>
+      </ToolBar>
+   </children>
+
+
+</VBox>

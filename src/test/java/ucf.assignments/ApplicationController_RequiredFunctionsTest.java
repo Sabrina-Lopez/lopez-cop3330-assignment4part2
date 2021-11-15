@@ -46,7 +46,7 @@ public class ApplicationController_RequiredFunctionsTest  {
         assertEquals(testItemDeadline2, testOuterMap.get(testItemTitle2).getItemDeadline());
 
         //using the assertEquals method, if the edited item's completion status has changed and matches to the new completion status, then the editItemFunction was successful
-        assertEquals(testItemCompletionStatus2, testOuterMap.get(testItemTitle2).getItemCompletionFlag());
+        assertEquals(testItemCompletionStatus2, testOuterMap.get(testItemTitle2).getItemCompletionStatus());
 
         //function call to the removeItemFunction in the ApplicationController_RequiredFunctions java file to test whether the function removes an item from the hashmap
         ApplicationController_RequiredFunctions.removeItemFunction(testOuterMap, testItemTitle2);
